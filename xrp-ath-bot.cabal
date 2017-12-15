@@ -21,6 +21,9 @@ library
                      , servant-server
                      , wai
                      , warp
+                     , req
+                     , text
+                     , bytestring
   default-language:    Haskell2010
 
 executable xrp-ath-bot-exe

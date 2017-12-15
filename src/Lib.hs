@@ -6,11 +6,15 @@ module Lib
     , app
     ) where
 
-import Data.Aeson
-import Data.Aeson.TH
-import Network.Wai
-import Network.Wai.Handler.Warp
-import Servant
+import           ReqXRP
+
+import           Data.Aeson
+import           Data.Aeson.TH
+import           Data.Maybe
+import           Network.Wai
+import           Network.Wai.Handler.Warp
+import           Servant
+
 
 data User = User
   { userId        :: Int
@@ -22,8 +26,9 @@ $(deriveJSON defaultOptions ''User)
 
 type API = "users" :> Get '[JSON] [User]
 
+
 startApp :: IO ()
-startApp = run 8080 app
+startApp = print (reqXRP)
 
 app :: Application
 app = serve api server
