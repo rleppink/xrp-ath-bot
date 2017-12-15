@@ -39,6 +39,8 @@ instance FromJSON TickerResponse where
     <*> fmap read (v .: "timestamp")
     <*> fmap read (v .: "open")
 
+getLast :: IO (Double)
+getLast = maybe (-1.0) (ReqXRP.last reqXRP)
 
 reqXRP :: IO (Maybe TickerResponse)
 reqXRP = do
